@@ -60,17 +60,17 @@ button{
     border-radius: 8px;
 }
 
-.left-side, .right-side {
-    padding: 40px;
-    position: relative;
-}
-
 .left-side {
-    flex: 2;
     background-image: url("https://img.freepik.com/free-vector/man-with-briefcase-business-magnifying-glass_24877-63704.jpg?ga=GA1.1.329247990.1718702074&semt=ais_user");
     background-position: center;
     text-align: center;
     background-size: cover;
+    padding: 40px;
+    position: relative;
+}
+
+.right-side{
+    padding: 40px;
 }
 
 .overlay {
@@ -82,6 +82,7 @@ button{
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
 }
+
 
 .left-text {
     position: relative;
@@ -97,20 +98,26 @@ button{
 }
 
 .right-side h1 {
-    font-size: 24px;
+    font-size: 30px;
+    text-align: center;
 }
 
 .right-side p {
     text-align: center;
-    margin: 10px 0 30px 0;
+    margin: 4px 0 15px 0;
 }
 
 label {
-    margin: 10px 0 5px 0;
+    margin: 2px 0 5px 0;
+}
+
+form{
+    margin-top: 10px;
 }
 
 input {
     padding: 10px;
+    width: 100%;
     margin-bottom: 10px;
     border: 1px solid var(--light-grey);
     border-radius: 5px;
@@ -133,16 +140,6 @@ button.google-btn:hover {
     color: var(--google-red);
     background-color: transparent;
     border: 1px solid var(--google-red);
-}
-
-button.linkedin-btn {
-    background-color: var(--linkedin-blue);
-}
-
-button.linkedin-btn:hover {
-    color: var(--linkedin-blue);
-    background-color: transparent;
-    border: 1px solid var(--linkedin-blue);
 }
 
 .icon {

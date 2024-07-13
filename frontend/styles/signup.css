@@ -1,0 +1,5 @@
+@import url('common.css');
+
+.name-input #fname{
+    margin-right: 10px;
+}
