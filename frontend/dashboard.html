@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobHQ Dashboard</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.0/main.min.css">
+</head>
+
+<body class="flex justify-center align-center">
+    <div class="sidebar" id="sidebar">
+        <h2>JobHQ</h2>
+        <ul>
+            <li><a href="dashboard.html"><ion-icon name="grid" class="sidebar-icon"></ion-icon> Dashboard</a></li>
+            <li><a href="applications.html"><ion-icon name="briefcase" class="sidebar-icon"></ion-icon> My
+                    Applications</a></li>
+            <li><a href="profile.html"><ion-icon name="person" class="sidebar-icon"></ion-icon> Profile</a></li>
+            <li><a href="settings.html"><ion-icon name="settings" class="sidebar-icon"></ion-icon> Settings</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="header-content flex align-center">
+                <div class="user-profile">
+                    <a href="notifications.html"><ion-icon name="notifications" class="header-icon"></ion-icon></a>
+                    <a href="profile.html"><ion-icon name="person-circle" class="header-icon"></ion-icon></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="content flex flex-column">
+            <div class="top-section flex space-between">
+                <div class="welcome-message">
+                    <h2>Welcome, User!</h2>
+                </div>
+                <div class="filters flex align-center justify-center">
+                    <label for="filter-date-from">From: </label>
+                    <input type="date" id="filter-date-from">
+                    <label for="filter-date-to">To: </label>
+                    <input type="date" id="filter-date-to">
+                    <button id="apply-filters">Apply</button>
+                </div>
+            </div>
+            <div class="dashboard-widgets flex space-between wrap">
+                <div class="widget box-shadow small">
+                    <h3>Applications Submitted</h3>
+                    <p>12</p>
+                </div>
+                <div class="widget box-shadow small">
+                    <h3>Interviews Scheduled</h3>
+                    <p>3</p>
+                </div>
+                <div class="widget box-shadow small">
+                    <h3>Offers Received</h3>
+                    <p>1</p>
+                </div>
+                <div class="widget box-shadow small">
+                    <h3>Jobs Accepted</h3>
+                    <p>1</p>
+                </div>
+            </div>
+            <div class="charts-container flex wrap">
+                <div class="chart-card box-shadow half-width">
+                    <h3>Applications Overview</h3>
+                    <canvas id="applicationsChart"></canvas>
+                </div>
+                <div class="chart-card box-shadow half-width">
+                    <h3>Interviews Overview</h3>
+                    <canvas id="interviewsChart"></canvas>
+                </div>
+                <div class="chart-card box-shadow half-width">
+                    <h3>Offers Overview</h3>
+                    <canvas id="offersChart"></canvas>
+                </div>
+                <div class="chart-card box-shadow half-width">
+                    <h3>Jobs Overview</h3>
+                    <canvas id="jobsChart"></canvas>
+                </div>
+            </div>
+            <div class="recent-activity box-shadow">
+                <h3>Recent Activity</h3>
+                <ul>
+                    <li>Applied to <strong>Software Engineer</strong> at <strong>Google</strong></li>
+                    <li>Interview scheduled with <strong>Facebook</strong></li>
+                    <li>Received offer from <strong>Microsoft</strong></li>
+                </ul>
+            </div>
+            <div class="calendar-container flex flex-column box-shadow">
+                <h3>Upcoming Events</h3>
+                <div id="calendar" class="calendar-widget box-shadow"></div>
+            </div>
+        </div>
+    </div>
+
+    <button class="hamburger" id="hamburger">
+        <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <script src="scripts/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.0/main.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

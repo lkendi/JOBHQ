@@ -1,0 +1,153 @@
+@import url('common.css');
+
+/*Header Styles*/
+.login-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 90px;
+    z-index: 10000;
+    background-color: transparent;
+    border-bottom-color: var(--dark-grey);
+    box-shadow: none;
+
+}
+
+button{
+    padding: 15px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.logo{
+    font-size: 2em;
+    user-select: none;
+}
+
+.navigation a{
+    position: relative;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: var(--white);
+    border-radius: 5px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .5s;
+}
+
+.navigation a:hover::after{
+    transform: scaleX(1);
+    transform-origin: center;
+}
+
+/*Main Content Styles*/
+.container {
+    width: 78%;
+    height: 80vh;
+    margin-top: 70px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.left-side, .right-side {
+    padding: 40px;
+    position: relative;
+}
+
+.left-side {
+    flex: 2;
+    background-image: url("https://img.freepik.com/free-vector/man-with-briefcase-business-magnifying-glass_24877-63704.jpg?ga=GA1.1.329247990.1718702074&semt=ais_user");
+    background-position: center;
+    text-align: center;
+    background-size: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.left-text {
+    position: relative;
+    z-index: 2;
+}
+
+.left-text h2 {
+    font-size: 36px;
+}
+
+.left-text p {
+    margin: 10px 0;
+}
+
+.right-side h1 {
+    font-size: 24px;
+}
+
+.right-side p {
+    text-align: center;
+    margin: 10px 0 30px 0;
+}
+
+label {
+    margin: 10px 0 5px 0;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--light-grey);
+    border-radius: 5px;
+}
+
+hr{
+  flex-grow: 1;
+  border-top: 1px solid var(--light-grey);
+}
+
+span{
+  margin: 0 7px;
+}
+
+button.google-btn {
+    background-color: var(--google-red);
+}
+
+button.google-btn:hover {
+    color: var(--google-red);
+    background-color: transparent;
+    border: 1px solid var(--google-red);
+}
+
+button.linkedin-btn {
+    background-color: var(--linkedin-blue);
+}
+
+button.linkedin-btn:hover {
+    color: var(--linkedin-blue);
+    background-color: transparent;
+    border: 1px solid var(--linkedin-blue);
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+}

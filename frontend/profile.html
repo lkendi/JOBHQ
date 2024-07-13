@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobHQ Profile</title>
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/common.css">
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <h2>JobHQ</h2>
+        <ul>
+            <li><a href="dashboard.html"><ion-icon class="sidebar-icon" name="grid"></ion-icon> Dashboard</a></li>
+            <li><a href="applications.html"><ion-icon class="sidebar-icon" name="briefcase"></ion-icon> My
+                    Applications</a></li>
+            <li><a href="profile.html"><ion-icon class="sidebar-icon" name="person"></ion-icon> Profile</a></li>
+            <li><a href="settings.html"><ion-icon class="sidebar-icon" name="settings"></ion-icon> Settings</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="header-content flex space-between align-center">
+                <div class="user-profile">
+                    <a href="notifications.html"><ion-icon name="notifications" class="header-icon"></ion-icon></a>
+                    <a href="profile.html"><ion-icon name="person-circle" class="header-icon"></ion-icon></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="welcome-message">
+                <h2>Profile</h2>
+            </div>
+            <div class="profile-container box-shadow">
+                <div class="profile-header">
+                    <h3>User Information</h3>
+                </div>
+                <div class="profile-content">
+                    <form>
+                        <div class="form-row flex">
+                            <div class="flex-1">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" value="JohnDoe">
+                            </div>
+                            <div class="flex-1">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" value="johndoe@example.com">
+                            </div>
+                        </div>
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" value="+123456789">
+
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" name="bio">A brief bio about the user.</textarea>
+
+                        <button type="cancel">Cancel</button>
+                        <button type="submit">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="hamburger" id="hamburger">
+        <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <script src="scripts/profile.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

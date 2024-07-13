@@ -1,0 +1,126 @@
+
+@import url('common.css');
+
+
+.content {
+    padding: 20px;
+    gap: 20px;
+}
+
+.top-section {
+    background-color: transparent;
+}
+
+.welcome-message h2 {
+    margin: 15px;
+}
+
+.filters {
+    padding: 10px;
+    gap: 10px;
+    border-radius: 5px;
+}
+
+.filters input, .filters button {
+    padding: 5px;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+.filters button{
+    background-color: var(--light-blue);
+    padding: 5px 10px;
+}
+
+.dashboard-widgets {
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.widget {
+    background-color: var(--grey-2);
+    padding: 20px;
+    width: 30%;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.widget.small {
+    max-width: calc(25% - 20px);
+}
+
+.charts-container {
+    gap: 20px;
+}
+
+.chart-card {
+    flex: 1 1 calc(50% - 20px);
+    padding: 20px;
+    border-radius: 5px;
+    background-color: var(--grey-2);
+}
+
+.widget h3 {
+    margin-bottom: 10px;
+}
+
+.widget p {
+    font-size: 24px;
+    color: var(--light-blue);
+}
+
+.recent-activity, .calendar-container {
+    background-color: var(--grey-2);
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.recent-activity ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.recent-activity ul li:last-child {
+    border-bottom: none;
+}
+
+.calendar-container {
+    gap: 20px;
+}
+
+.calendar-widget {
+    margin-top: 20px;
+}
+
+.recent-activity h3, .calendar h3 {
+    margin-bottom: 20px;
+}
+
+.recent-activity ul li {
+    margin-bottom: 10px;
+}
+
+.calendar-widget {
+    height: 400px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .widget.small {
+        max-width: calc(50% - 20px);
+        margin-bottom: 20px;
+    }
+    .chart-card {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .widget.small {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,45 @@
+@import url('common.css');
+
+.welcome-message h2{
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.content {
+    padding: 25px;
+}
+
+.settings-container {
+    background-color: var(--grey-2);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.settings-header h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.settings-content label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.settings-content input,
+.settings-content select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--light-grey);
+    border-radius: 5px;
+}
+
+.settings-content button {
+    background-color: var(--light-blue);
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+.settings-content button:hover {
+    background-color: #0056b3;
+}
