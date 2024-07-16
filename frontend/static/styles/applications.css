@@ -9,14 +9,14 @@
     padding: 0 30px;
 }
 
-.view-toggle button {
+.view-toggle button, #add-application-form button, .edit-application-form button {
     background-color: var(--light-blue);
     padding: 10px 20px;
     margin-left: 10px;
     transition: background-color 0.5s;
 }
 
-.view-toggle button:hover {
+.view-toggle button:hover, #add-application-form button:hover, .edit-application-form button:hover {
     background-color: #0056b3;
 }
 
@@ -27,6 +27,50 @@
 .view.active {
     display: block;
 }
+
+/*Form to Add Applications*/
+#add-application-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  #add-application-form .inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  #add-application-form input,
+  #add-application-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  #add-application-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #add-application-form button:hover {
+    background-color: #0069d9;
+  }
+
+
 
 /*Grid View Styles*/
 
@@ -100,7 +144,6 @@
 }
 
 .popup-content {
-    background-color: var(--white);
     padding: 30px;
     color: var(--grey-2);
     border-radius: 5px;
@@ -114,4 +157,25 @@
     right: 25px;
     font-size: 25px;
     cursor: pointer;
+}
+
+.edit-application-form input, select{
+    border-radius: 6px;
+    padding: 6px;
+    border: 1px solid var(--grey-2);
+    margin-top: 10px;
+}
+
+.btns{
+    margin-top: 10px;
+    justify-content: end;
+}
+
+.edit-icon{
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.edit-icon:hover{
+    color: var(--light-blue);
 }

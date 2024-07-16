@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - JobHQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/common.css') }}">
+</head>
+<body class="flex justify-center align-center">
+    <header class="login-header flex align-center space-between">
+        <h2 class="logo">JobHQ</h2>
+        <nav class="navigation">
+            <a href="{{ url_for('auth.signup') }}">Signup</a>
+            <a href="{{ url_for('auth.home') }}">Login</a>
+        </nav>
+    </header>
+    <div class="container flex box-shadow">
+        <div class="left-side flex flex-1 flex-column justify-center align-center">
+            <div class="overlay"></div>
+            <div class="left-text">
+                <h2>Welcome!</h2>
+                <p>Discover JobHQ - Your Ultimate Job Application Tracker! Start managing your job applications faster
+                    and better!</p>
+            </div>
+        </div>
+        <div class="right-side flex flex-1 flex-column justify-center">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="flash-messages" id="flash-messages">
+                {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <h1>Create A New Account</h1>
+            <form action="{{ url_for('auth.signup') }}" method="post" class="flex flex-column">
+                <label>Name</label>
+                <div class="form-row flex">
+                    <input type="text" name="fname" id="fname" class="right-space" placeholder="First Name" required value="{{ form_data.fname if form_data else '' }}">
+                    <input type="text" name="lname" id="lname" placeholder="Last Name" required value="{{ form_data.lname if form_data else '' }}">
+                </div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" required value="{{ form_data.email if form_data else '' }}">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter Password" required>
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
+                <button type="submit"> <ion-icon class="icon" name="person-add-outline"></ion-icon> Create Account</button>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts/flash-message.js') }}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

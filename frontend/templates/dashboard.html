@@ -5,21 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JobHQ Dashboard</title>
-    <link rel="stylesheet" href="styles/dashboard.css">
-    <link rel="stylesheet" href="styles/common.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/common.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.0/main.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.0/main.min.js"></script>
 </head>
 
 <body class="flex justify-center align-center">
     <div class="sidebar" id="sidebar">
         <h2>JobHQ</h2>
         <ul>
-            <li><a href="dashboard.html"><ion-icon name="grid" class="sidebar-icon"></ion-icon> Dashboard</a></li>
-            <li><a href="applications.html"><ion-icon name="briefcase" class="sidebar-icon"></ion-icon> My
+            <li><a href="{{ url_for('dashboard.dashboard') }}"><ion-icon name="grid-outline"
+                        class="sidebar-icon"></ion-icon>Dashboard</a>
+            </li>
+            <li><a href="{{ url_for('applications.applications') }}"><ion-icon name="briefcase-outline"
+                        class="sidebar-icon"></ion-icon> My
                     Applications</a></li>
-            <li><a href="profile.html"><ion-icon name="person" class="sidebar-icon"></ion-icon> Profile</a></li>
-            <li><a href="settings.html"><ion-icon name="settings" class="sidebar-icon"></ion-icon> Settings</a></li>
+            <li><a href="{{ url_for('profile.profile') }}"><ion-icon name="person-outline"
+                        class="sidebar-icon"></ion-icon> Profile</a>
+            </li>
+            <li><a href="{{ url_for('settings.settings') }}"><ion-icon name="settings-outline"
+                        class="sidebar-icon"></ion-icon>Settings</a></li>
+            <li><a href="{{ url_for('auth.logout') }}"><ion-icon name="log-out-outline" class="sidebar-icon"></ion-icon>
+                    Logout</a></li>
         </ul>
     </div>
 
@@ -27,8 +36,8 @@
         <header>
             <div class="header-content flex align-center">
                 <div class="user-profile">
-                    <a href="notifications.html"><ion-icon name="notifications" class="header-icon"></ion-icon></a>
-                    <a href="profile.html"><ion-icon name="person-circle" class="header-icon"></ion-icon></a>
+                    <a href="{{ url_for('notifications.notifications') }}"><ion-icon name="notifications" class="header-icon"></ion-icon></a>
+                    <a href="{{ url_for('profile.profile') }}"><ion-icon name="person-circle" class="header-icon"></ion-icon></a>
                 </div>
             </div>
         </header>
@@ -36,32 +45,32 @@
         <div class="content flex flex-column">
             <div class="top-section flex space-between">
                 <div class="welcome-message">
-                    <h2>Welcome, User!</h2>
+                    <h2>Welcome, {{ user.first_name }}!</h2>
                 </div>
                 <div class="filters flex align-center justify-center">
                     <label for="filter-date-from">From: </label>
                     <input type="date" id="filter-date-from">
                     <label for="filter-date-to">To: </label>
                     <input type="date" id="filter-date-to">
-                    <button id="apply-filters">Apply</button>
+                    <button id="apply-filters" class="apply-btn">Apply</button>
                 </div>
             </div>
             <div class="dashboard-widgets flex space-between wrap">
                 <div class="widget box-shadow small">
                     <h3>Applications Submitted</h3>
-                    <p>12</p>
+                    <p id="applications-submitted">0</p>
                 </div>
                 <div class="widget box-shadow small">
                     <h3>Interviews Scheduled</h3>
-                    <p>3</p>
+                    <p id="interviews-scheduled">0</p>
                 </div>
                 <div class="widget box-shadow small">
                     <h3>Offers Received</h3>
-                    <p>1</p>
+                    <p id="offers-received">0</p>
                 </div>
                 <div class="widget box-shadow small">
                     <h3>Jobs Accepted</h3>
-                    <p>1</p>
+                    <p id="jobs-accepted">0</p>
                 </div>
             </div>
             <div class="charts-container flex wrap">
@@ -78,17 +87,13 @@
                     <canvas id="offersChart"></canvas>
                 </div>
                 <div class="chart-card box-shadow half-width">
-                    <h3>Jobs Overview</h3>
+                    <h3>Roles Applied</h3>
                     <canvas id="jobsChart"></canvas>
                 </div>
             </div>
             <div class="recent-activity box-shadow">
                 <h3>Recent Activity</h3>
-                <ul>
-                    <li>Applied to <strong>Software Engineer</strong> at <strong>Google</strong></li>
-                    <li>Interview scheduled with <strong>Facebook</strong></li>
-                    <li>Received offer from <strong>Microsoft</strong></li>
-                </ul>
+                <ul id="recent-activity-list"></ul>
             </div>
             <div class="calendar-container flex flex-column box-shadow">
                 <h3>Upcoming Events</h3>
@@ -101,8 +106,8 @@
         <ion-icon name="menu"></ion-icon>
     </button>
 
-    <script src="scripts/dashboard.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.0/main.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

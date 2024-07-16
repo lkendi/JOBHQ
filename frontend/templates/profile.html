@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/common.css') }}">
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <h2>JobHQ</h2>
+        <ul>
+            <li><a href="{{ url_for('dashboard.dashboard') }}"><ion-icon name="grid-outline"
+                        class="sidebar-icon"></ion-icon>Dashboard</a>
+            </li>
+            <li><a href="{{ url_for('applications.applications') }}"><ion-icon name="briefcase-outline"
+                        class="sidebar-icon"></ion-icon> My
+                    Applications</a></li>
+            <li><a href="{{ url_for('profile.profile') }}"><ion-icon name="person-outline"
+                        class="sidebar-icon"></ion-icon> Profile</a>
+            </li>
+            <li><a href="{{ url_for('settings.settings') }}"><ion-icon name="settings-outline"
+                        class="sidebar-icon"></ion-icon>Settings</a></li>
+            <li><a href="{{ url_for('auth.logout') }}"><ion-icon name="log-out-outline" class="sidebar-icon"></ion-icon>
+                    Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="header-content flex space-between align-center">
+                <div class="user-profile">
+                    <a href="{{ url_for('notifications.notifications') }}"><ion-icon name="notifications"
+                            class="header-icon"></ion-icon></a>
+                    <div class="profile-picture">
+                        {% if user.profile_picture %}
+                        <img src="{{ user.profile_picture }}" alt="Profile Picture">
+                        {% else %}
+                        <ion-icon name="person-circle" class="header-icon"></ion-icon>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="welcome-message">
+                <h2>Profile</h2>
+            </div>
+            <div class="form-container box-shadow">
+                <div class="profile-content">
+                    <form>
+                        <div class="form-row flex ">
+                            <div class="flex-1 right-space">
+                                <label for="fname">First Name</label>
+                                <input type="text" id="fname" name="fname"
+                                    value="{{ user.first_name }}">
+                            </div>
+                            <div class="flex-1">
+                                <label for="lname">Last Name</label>
+                                <input type="text" id="lname" name="lname" value="{{ user.last_name }}">
+                            </div>
+                        </div>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="{{ user.email }}">
+
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" name="bio" placeholder="Add your bio here..."
+                            value="{{ user.bio}}"></textarea>
+
+                        <div class="flex justify-end">
+                            <button type="cancel" class="right-space" onclick="reset()">Cancel</button>
+                            <button type="submit">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="hamburger" id="hamburger">
+        <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

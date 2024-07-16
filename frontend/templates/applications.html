@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobHQ Job Applications</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/applications.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/common.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <h2>JobHQ</h2>
+
+        <ul>
+            <li><a href="{{ url_for('dashboard.dashboard') }}"><ion-icon name="grid-outline"
+                        class="sidebar-icon"></ion-icon>Dashboard</a>
+            </li>
+            <li><a href="{{ url_for('applications.applications') }}"><ion-icon name="briefcase-outline"
+                        class="sidebar-icon"></ion-icon> My
+                    Applications</a></li>
+            <li><a href="{{ url_for('profile.profile') }}"><ion-icon name="person-outline"
+                        class="sidebar-icon"></ion-icon> Profile</a>
+            </li>
+            <li><a href="{{ url_for('settings.settings') }}"><ion-icon name="settings-outline"
+                        class="sidebar-icon"></ion-icon>Settings</a></li>
+            <li><a href="{{ url_for('auth.logout') }}"><ion-icon name="log-out-outline" class="sidebar-icon"></ion-icon>
+                    Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="header-content flex space-between align-center">
+                <div class="user-profile">
+                    <a href="{{ url_for('notifications.notifications') }}"><ion-icon name="notifications"
+                            class="header-icon"></ion-icon></a>
+                    <a href="{{ url_for('profile.profile') }}"><ion-icon name="person-circle"
+                            class="header-icon"></ion-icon></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="top-section flex space-between justify-center align-center">
+                <div class="welcome-message">
+                    <h2>My Applications</h2>
+                </div>
+                <div class="view-toggle">
+                    <button id="add-application-btn">New Application</button>
+                    <button id="grid-view-btn">Grid View</button>
+                    <button id="kanban-view-btn">Kanban View</button>
+                </div>
+            </div>
+
+            <div id="add-application-popup" class="popup justify-center align-center">
+                <div class="popup-content">
+                    <span class="close" id="add-application-close">&times;</span>
+                    <h3>Add New Application</h3>
+                    <form id="add-application-form" class="flex space-between" action="{{ url_for('applications.add_application') }}"
+                        method="post">
+                        <div class="inputs flex-1">
+                            <input type="text" name="job_title" placeholder="Job Title" required>
+                            <input type="text" name="company_name" placeholder="Company Name" required>
+                            <input type="date" name="application_date" required>
+                            <select name="status" required>
+                                <option value="applied">Applied</option>
+                                <option value="interview">Interview</option>
+                                <option value="offer">Offer</option>
+                            </select>
+                        </div>
+                        <button type="submit">Add Application</button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="grid-view" class="view active">
+                <table>
+                    <thead>
+                        <tr class="header-row">
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Date Applied</th>
+                            <th>Status</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for application in applications %}
+                        <tr>
+                            <td>{{ application.job_title }}</td>
+                            <td>{{ application.company_name }}</td>
+                            <td>{{ application.application_date }}</td>
+                            <td>{{ application.status }}</td>
+                            <td>
+                                <ion-icon name="create-outline" class="edit-icon"
+                                    data-id="{{ application.id }}"></ion-icon>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="kanban-view" class="view">
+                <div class="kanban-column box-shadow" data-status="applied">
+                    <h3>Applied</h3>
+                    {% for application in applications if application.status == 'applied' %}
+                    <div class="kanban-card box-shadow" data-id="{{ application.id }}" draggable="true">
+                        <h4>{{ application.job_title }}</h4>
+                        <p>{{ application.company_name }}</p>
+                        <p>{{ application.application_date }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="kanban-column" data-status="interview">
+                    <h3>Interview</h3>
+                    {% for application in applications if application.status == 'interview' %}
+                    <div class="kanban-card" data-id="{{ application.id }}" draggable="true">
+                        <h4>{{ application.job_title }}</h4>
+                        <p>{{ application.company_name }}</p>
+                        <p>{{ application.application_date }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="kanban-column" data-status="offer">
+                    <h3>Offer</h3>
+                    {% for application in applications if application.status == 'offer' %}
+                    <div class="kanban-card" data-id="{{ application.id }}" draggable="true">
+                        <h4>{{ application.job_title }}</h4>
+                        <p>{{ application.company_name }}</p>
+                        <p>{{ application.application_date }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="hamburger" id="hamburger">
+        <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <div id="popup" class="popup justify-center align-center">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h3>Edit Job Details</h3>
+            <form id="edit-application-form" class="edit-application-form flex flex-column">
+                <input type="hidden" name="application_id" id="edit-application-id">
+                <input type="text" name="job_title" id="edit-job-title" placeholder="Job Title" required>
+                <input type="text" name="company_name" id="edit-company-name" placeholder="Company Name" required>
+                <input type="date" name="application_date" id="edit-application-date" required>
+                <select name="status" id="edit-status" required>
+                    <option value="applied">Applied</option>
+                    <option value="interview">Interview</option>
+                    <option value="offer">Offer</option>
+                </select>
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes"></textarea>
+                <div class="btns flex">
+                    <button type="button" id="cancel-button">Cancel</button>
+                    <button type="button" id="save-button">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts/applications.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/sidebar.js') }}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

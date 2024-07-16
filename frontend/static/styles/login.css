@@ -15,7 +15,7 @@
 }
 
 button{
-    padding: 15px;
+    padding: 13px;
     margin: 10px 0;
     width: 100%;
 }
@@ -54,7 +54,7 @@ button{
 /*Main Content Styles*/
 .container {
     width: 78%;
-    height: 80vh;
+    height: 85vh;
     margin-top: 70px;
     overflow: hidden;
     border-radius: 8px;
@@ -98,7 +98,7 @@ button{
 }
 
 .right-side h1 {
-    font-size: 30px;
+    font-size: 26px;
     text-align: center;
 }
 
@@ -123,28 +123,9 @@ input {
     border-radius: 5px;
 }
 
-hr{
-  flex-grow: 1;
-  border-top: 1px solid var(--light-grey);
-}
-
-span{
-  margin: 0 7px;
-}
-
-button.google-btn {
-    background-color: var(--google-red);
-}
-
-button.google-btn:hover {
-    color: var(--google-red);
-    background-color: transparent;
-    border: 1px solid var(--google-red);
-}
-
 .icon {
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
     margin-right: 10px;
     vertical-align: middle;
 }

@@ -1,6 +1,4 @@
-
 @import url('common.css');
-
 
 .content {
     padding: 20px;
@@ -9,10 +7,6 @@
 
 .top-section {
     background-color: transparent;
-}
-
-.welcome-message h2 {
-    margin: 15px;
 }
 
 .filters {
@@ -29,7 +23,12 @@
 
 .filters button{
     background-color: var(--light-blue);
-    padding: 5px 10px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+.filters button:hover{
+    background-color: var(--dark-blue);
 }
 
 .dashboard-widgets {

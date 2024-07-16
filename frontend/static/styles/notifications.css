@@ -1,13 +1,5 @@
 @import url('common.css');
 
-.welcome-message h2 {
-   margin: 15px 10px;
-}
-
-.content {
-    padding: 20px;
-}
-
 .notifications-container {
     background-color: var(--grey-2);
     padding: 20px;
@@ -20,8 +12,7 @@
     border-bottom: 1px solid var(--light-grey);
 }
 
-
 .timestamp {
-    color: var(--linkedin-blue);
+    color: var(--light-grey);
     font-size: 0.9em;
 }
